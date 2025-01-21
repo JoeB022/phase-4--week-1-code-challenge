@@ -109,5 +109,20 @@ def logout():
     unset_jwt_cookies(logedout)
     return logedout
 
+# Delete accounts
+@auth_bp.route("/user/<int:user_id>", methods=["DELETE"])
+@jwt_required()
+def delete_account(user_id):
+    current_user_id = get_jwt_identity()
+    if current_user_id!= user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({"success": "User account deleted successfully"}), 200
 
 

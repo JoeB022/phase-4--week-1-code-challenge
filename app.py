@@ -16,12 +16,11 @@ db.init_app(app)
 
 
 # import all functions in views
-#used this to import all the files that are in the views flder
 from views import Product_bp,Order_bp,user_bp,auth_bp
 
 # /JWT -EXTENDED for Flask ..
 app.config["JWT_SECRET_KEY"] = "jdfbjbcdhurhfjxbnm " 
-# //limit the token of authorizationa dn how long it shiuld take to expire !
+#
 app.config["JWT_ACCESS_TOKEN_EXPIRE"] = timedelta(hours = 20)
 jwt = JWTManager(app)
 jwt.init_app(app)

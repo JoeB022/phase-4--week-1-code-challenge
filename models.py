@@ -2,10 +2,10 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from sqlalchemy import MetaData,ForeignKey,DateTime
 from datetime import date
-# initualizing metadata 
+# initializing metadata 
 metadata = MetaData 
 
-#seting up db which is sql...
+#setting up sql db
 db = SQLAlchemy()
 
 class User(db.Model):

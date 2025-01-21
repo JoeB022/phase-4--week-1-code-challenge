@@ -77,10 +77,9 @@ def update_user(user_id):
 @user_bp.route("/users/<int:user_id>", methods=["DELETE"])
 def delete_user(user_id):
     try:
-        # Fetch the user by Id ju nilisemafrom the raote that i will delete by id 
         user = User.query.get(user_id)
 
-        # Check if the user exists..kutoka kwa db
+      
         if not user:
             return jsonify({"error": "User does not exist"}), 404
 
